@@ -26,23 +26,33 @@ mongoose
   .then(() => console.log("Connected to MongoDB Atlas")) // Log a message on successful connection
   .catch((err) => console.error("Could not connect to MongoDB Atlas", err)); // Log an error if the connection fails
 
-// Define a Mongoose schema for the Todo model with text and completed fields
-// ** DIFFERENT
-const todoSchema = new mongoose.Schema({
+// Define a Mongoose schema for the User model with text and completed fields
+const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  picture: 
-  {
-    data: Buffer,
-    contentType: String
-  }
-  
+  picture: String,
+  instrument: {
+    type: String,
+    enum: ["Guitar", "Bass", "Drums", "Keyboard"],
+  },
+  skillLevel: {
+    type: String,
+    enum: ["Beginner", "Intermediate", "Advanced"],
+  },
+  location: {
+    type: String,
+    enum: ["North Van", "West Van", "UBC", "Downtown", "Kitsilano"],
+  },
+  availability: {
+    type: String,
+    enum: ["M", "T", "W", "Th", "F", "S", "Su"],
+  },
 });
 
-// Create a Mongoose model for the Todo schema
+// Create a Mongoose model for the User schema
 // DIFFERENT
 
-const Todo = mongoose.model("Todo", todoSchema);
+const User = mongoose.model("User", userSchema);
 
 // Define a GET route to fetch all todos
 app.get("/todos", async (req, res) => {
@@ -55,15 +65,19 @@ app.get("/todos", async (req, res) => {
 });
 
 // Define a POST route to create a new todo
-app.post("/todos", async (req, res) => {
-  const todo = new Todo({
-    text: req.body.text, // Set the text from the request body
-    completed: req.body.completed, // Set the completed status from the request body
+app.post("/users", async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    picture: req.body.picture,
+    instrument: req.body.instrument,
+    skillLevel: req.body.skillLevel,
+    location: req.body.location,
+    availability: req.body.availability,
   });
-
   try {
-    const newTodo = await todo.save(); // Save the new todo to the database
-    res.status(201).json(newTodo); // Send a 201 Created response with the new todo
+    const newUser = await user.save(); // Save the new user to the database
+    res.status(201).json(newUser); // Send a 201 Created response with the new user
   } catch (err) {
     res.status(400).json({ message: err.message }); // Send a 400 Bad Request response if an error occurs
   }
