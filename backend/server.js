@@ -29,8 +29,14 @@ mongoose
 // Define a Mongoose schema for the Todo model with text and completed fields
 // ** DIFFERENT
 const todoSchema = new mongoose.Schema({
-  text: String,
-  completed: Boolean,
+  name: String,
+  email: String,
+  picture: 
+  {
+    data: Buffer,
+    contentType: String
+  }
+  
 });
 
 // Create a Mongoose model for the Todo schema
