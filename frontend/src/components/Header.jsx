@@ -1,13 +1,14 @@
 // rafce for reqct template start
 
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import the Link component
 
 const Header = () => {
   return (
     <div>
-        This is a header
+        <Link to="/SignUp">SignUp</Link> {}
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
