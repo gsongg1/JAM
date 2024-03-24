@@ -1,19 +1,29 @@
 import React from "react";
 import Profile from "../components/Profile";
-import BottomNavigation from '@mui/material/BottomNavigation';
+import LabelBottomNavigation from "../components/Nav";
 
-const userName = "John Doe";
-const userEmail = "john.doe@example.com";
-const userInstrument = "trumpet";
-const userLevel = "2"
-const userLocation = "Vancouver"
-const userAbout = "Looking to jam"
-return (
+// Define a functional component, for example, App or ProfilePage
+const App = () => {
+  const userName = "John Doe";
+  const userEmail = "john.doe@example.com";
+  const userInstrument = "trumpet";
+  const userLevel = "2";
+  const userLocation = "Vancouver";
+  const userAbout = "Looking to jam";
+
+  // Return JSX from inside the component
+  return (
     <div className="app">
-        <ProfilePage name={userName} email={userEmail} instrument={userInstrument} 
-        level={userLevel} location={userLocation} about={userAbout}/>
-        <BottomNavigation />
+      <Profile
+        name={userName}
+        email={userEmail}
+        instrument={userInstrument}
+        level={userLevel}
+        location={userLocation}
+        about={userAbout} />
+      <LabelBottomNavigation />
     </div>
-);
+  );
+};
 
-export default App;
+export default App; // Export the component to use it in other parts of your application

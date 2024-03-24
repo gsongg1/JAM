@@ -83,6 +83,8 @@ export default function SignIn() {
               label="Remember me"
             />
             <Button
+              component={RouterLink}
+              to="/profile-list"
               type="submit"
               fullWidth
               variant="contained"
