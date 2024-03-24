@@ -4,7 +4,8 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Header from './components/Header';
-import SignUp from './pages/SignUp'; // Import the SignUpPage component
+import SignUp from './pages/SignUp'; 
+import SignIn from './pages/SignIn';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,8 +15,9 @@ function App() {
       <div>
         <Header />
         <Routes>
-          <Route path="/" element={<h1 className="text-3xl font-bold underline text-red-600">Hello World</h1>} />
+          <Route path="/" element={<h1 className="text-3xl font-bold underline text-red-600">WELCOME TO JAM</h1>} />
           <Route path="/SignUp" element={<SignUp/>} /> {/* Add the SignUpPage route */}
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </div>
     </Router>
