@@ -26,59 +26,87 @@ mongoose
   .then(() => console.log("Connected to MongoDB Atlas")) // Log a message on successful connection
   .catch((err) => console.error("Could not connect to MongoDB Atlas", err)); // Log an error if the connection fails
 
-// Define a Mongoose schema for the Todo model with text and completed fields
-// ** DIFFERENT
-const todoSchema = new mongoose.Schema({
-  text: String,
-  completed: Boolean,
+// Define a Mongoose schema for the User model with text and completed fields
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, unique: true },
+  password: String,
+  picture: String,
+  instrument: {
+    type: String,
+    enum: ["Guitar", "Bass", "Drums", "Keyboard"],
+  },
+  skillLevel: {
+    type: String,
+    enum: ["Beginner", "Intermediate", "Advanced"],
+  },
+  location: {
+    type: String,
+    enum: ["North Van", "West Van", "UBC", "Downtown", "Kitsilano"],
+  },
+  availability: {
+    type: String,
+    enum: ["M", "T", "W", "Th", "F", "S", "Su"],
+  },
+  bio: String,
 });
 
-// Create a Mongoose model for the Todo schema
-// DIFFERENT
+// Create a Mongoose model for the User schema
 
-const Todo = mongoose.model("Todo", todoSchema);
+const User = mongoose.model("User", userSchema);
 
-// Define a GET route to fetch all todos
-app.get("/todos", async (req, res) => {
+// Define a GET route to fetch all users
+app.get("/users", async (req, res) => {
   try {
-    const todos = await Todo.find(); // Fetch all todos from the database
-    res.status(200).json(todos); // Send a 200 OK response with the todos
+    const users = await User.find(); // Fetch all users from the database
+    res.status(200).json(users); // Send a 200 OK response with the user list
   } catch (err) {
     res.status(500).json({ message: err.message }); // Send a 500 Internal Server Error response if an error occurs
   }
 });
 
-// Define a POST route to create a new todo
-app.post("/todos", async (req, res) => {
-  const todo = new Todo({
-    text: req.body.text, // Set the text from the request body
-    completed: req.body.completed, // Set the completed status from the request body
+// Define a POST route to create a new user
+app.post("/users", async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    picture: req.body.picture,
+    instrument: req.body.instrument,
+    skillLevel: req.body.skillLevel,
+    location: req.body.location,
+    availability: req.body.availability,
+    bio: req.body.bio,
   });
-
   try {
-    const newTodo = await todo.save(); // Save the new todo to the database
-    res.status(201).json(newTodo); // Send a 201 Created response with the new todo
+    const newUser = await user.save(); // Save the new user to the database
+    res.status(201).json(newUser); // Send a 201 Created response with the new user
   } catch (err) {
     res.status(400).json({ message: err.message }); // Send a 400 Bad Request response if an error occurs
   }
 });
 
-// Define a PUT route to update an existing todo
-app.put("/todos/:id", async (req, res) => {
+// Define a PUT route to update an existing user
+app.put("/users/:email", async (req, res) => {
   try {
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, // Return the updated document
-    });
-    res.status(200).json(updatedTodo); // Send a 200 OK response with the updated todo
+    const updatedUser = await User.findOneAndUpdate(
+      { email: req.params.email.toString() },
+      req.body,
+      {
+        new: true, // Return the updated document
+      }
+    );
+    res.status(200).json(updatedUser); // Send a 200 OK response with the updated user
   } catch (err) {
-    res.status(400).json({ message: err.message }); // Send a 400 Bad Request response if an error occurs
+    res.status(400).json({ message: err.message });
+    console.log(req.params.email) // Send a 400 Bad Request response if an error occurs
   }
 });
 
-// Define a DELETE route to delete an existing todo
-app.delete("/todos/:id", async (req, res) => {
+// Define a DELETE route to delete an existing user
+app.delete("/users/:email", async (req, res) => {
   try {
-    await Todo.findByIdAndDelete(req.params.id); // Delete the todo with the specified ID
+    await User.findOneAndDelete(req.params.email.toString()); // Delete the user with the specified ID
     res.status(204).send(); // Send a 204 No Content response to indicate successful deletion
   } catch (err) {
     res.status(500).json({ message: err.message }); // Send a 500 Internal Server Error response if an error occurs
