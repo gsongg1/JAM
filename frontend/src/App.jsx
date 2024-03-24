@@ -10,6 +10,7 @@ import BioPage from './pages/BioPage';
 import List from './pages/List';
 import CreateProfile from './pages/CreateProfile';
 import ProfilePage from './pages/ProfilePage';
+import MatchPage from './pages/MatchList';
 import jamLogo from './assets/LOGO.webp'; 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/list" element={<List />} />
           <Route path="/create-profile" element={<CreateProfile />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/match-list" element={<MatchPage />} />
 
         </Routes>
       </div>

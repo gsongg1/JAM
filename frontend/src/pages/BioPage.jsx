@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import LocationOnIcon from '@mui/icons-material/LocationOn'; // Import the location icon
+import MusicNoteIcon from '@mui/icons-material/MusicNote'; // Import an icon for the instrument
 
 export default function BioPage() {
   const [bio, setBio] = useState('');
