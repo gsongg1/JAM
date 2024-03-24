@@ -29,7 +29,7 @@ export default function CreateProfile() {
  const handleSubmit = (event) => {
    event.preventDefault();
    console.log('Profile Details:', profile);
-   // Perform profile creation logic...
+   updateUser(profile)
    navigate('/list'); // Navigate to the List page
  };
 
@@ -119,3 +119,29 @@ export default function CreateProfile() {
    </Container>
  );
 }
+
+const updateUser = async (profile) => {
+  const email = profile.email; // Make sure the email is included in the profile state
+  const url = `http://localhost:3000/users/${email}`; // Adjust the port number if necessary
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(profile),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const updatedUser = await response.json();
+    console.log('User updated successfully:', updatedUser);
+    // Here you can handle the updated user, e.g., show a success message
+  } catch (error) {
+    console.error('There was an error updating the user:', error);
+    // Here you can handle the error, e.g., show an error message
+  }
+};
