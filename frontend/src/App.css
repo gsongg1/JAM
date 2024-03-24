@@ -37,6 +37,11 @@
   padding: 2em;
 }
 
+.profile-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
 .read-the-docs {
   color: #888;
 }
