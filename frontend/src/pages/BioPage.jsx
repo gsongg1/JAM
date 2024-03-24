@@ -11,7 +11,6 @@ export default function BioPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Submitted Bio:', bio);
-    // need to add code to send to server
   };
 
   return (
