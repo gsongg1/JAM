@@ -39,8 +39,7 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    // Perform sign-up logic...
-
+    addUser(data.get("email"), data.get("password"))
     navigate('/create-profile'); // Navigate to the CreateProfile page
   };
 
@@ -93,7 +92,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign Up              
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
@@ -109,3 +108,16 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
+
+const addUser = (curEmail, curPassword) => {
+  console.log("Button clicked");
+  fetch("http://localhost:3000/users", {
+    method: "POST", // Specify the method to use for the request
+    headers: {
+      "Content-Type": "application/json", // Set the content type header to indicate a JSON body
+    },
+    body: JSON.stringify({ email: curEmail, password: curPassword}), // Convert the user data into a JSON string
+  })
+  .then((res) => res.json()) // Parse the JSON response
+  .catch((err) => console.error("Error adding todo", err)); // Log errors to the console
+};
