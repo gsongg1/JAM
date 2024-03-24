@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -6,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 export default function CreateProfile() {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState({
     instrument: '',
     skillLevel: '',
@@ -21,7 +23,9 @@ export default function CreateProfile() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Profile Details:', profile);
-    // You can add more logic here to handle the submitted profile details, such as sending it to a server
+    // Perform profile creation logic...
+
+    navigate('/list'); // Navigate to the List page
   };
 
   return (
