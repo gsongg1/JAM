@@ -8,18 +8,18 @@ import '../App.css'; // Ensure the CSS path is correct
 
 class UserProfile extends Component {
   userData = {
-    name: "John Doe",
-    email: "johndoe@example.com",
+    name: "George",
+    email: "george@example.com",
     instrument: "Guitar",
     level: "Beginner",
-    location: "New York, NY",
-    about: "John is a beginner guitar player with a passion for blues and rock music. He's currently looking for opportunities to join a band and perform at local venues. When he's not playing guitar, John enjoys hiking and photography.",
+    location: "Vancouver, BC",
+    about: "Im currently looking for opportunities to join a band and perform at local venues. When im not playing guitar, I enjoy hiking and photography.",
     availability: "Weekends and Monday evenings"
   };
 
-  // Placeholder function for handling the edit profile action
+  // Placeholder function for handling the edit profile action, WORK IN PROGRESS
   handleEditProfile = () => {
-    alert('Edit profile clicked! Implement navigation or editing logic here.');
+    alert('Edit profile clicked! We havent implemented the logic yet SORRY');
   }
 
   render() {
