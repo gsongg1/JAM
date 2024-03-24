@@ -1,52 +1,112 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use 'Routes' instead of 'Switch'
-import SignIn from './SignIn';
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use 'Routes' instead of 'Switch'
+// import SignIn from './SignIn';
+// import LabelBottomNavigation from '../components/Nav';
+// import '../App.css';
+// import ProfileCard from "../components/ProfileCard";
+// import Filter from '../components/Filter'
+
+
+// const loadusers= async () => {
+//     try {
+//       const response = await axios.get("http://localhost:3000/users");
+//       const users = response.data; // Access the response data
+  
+//       userList.innerHTML = ""; // Clear the current list
+//       users.forEach(addUserToList); // Add each todo to the list
+//     } catch (err) {
+//       console.error("Error loading users", err);
+//     }
+//   };
+
+//   const addUserToList = (user) => {
+//     const userObject = {
+//         name: user.name,
+//         email: user.email,
+//         instrument: user.instrument,
+//         level: user.level,
+//         location: user.location,
+//         about: user.about
+//     };
+//     // Push the user object into an array
+//     userList.push(userObject);
+// };
+  
+
+// const List = () => {
+//    // Sample profile data
+//    const profiles = [
+//     loadusers()
+//    ];
+
+//    return (
+//        <>
+//            <div className="profile-list">
+//                {profiles.map((profile, index) => (
+//                    <ProfileCard
+//                        key={index}
+//                        name={profile.name}
+//                        email={profile.email}
+//                        instrument={profile.instrument}
+//                        level={profile.level}
+//                        location={profile.location}
+//                        about={profile.about}
+//                    />
+//                ))}
+//            </div>
+//            <div className="nav-bar-fixed-bottom">
+//                <LabelBottomNavigation />
+//            </div>
+//        </>
+//    );
+// };
+
+
+// export default List;
+
+import React, { useState, useEffect } from 'react';
+import ProfileCard from "../components/ProfileCard";
 import LabelBottomNavigation from '../components/Nav';
 import '../App.css';
-import ProfileCard from "../components/ProfileCard";
-import Filter from '../components/Filter'
-
+import axios from "axios"
 
 const List = () => {
-   // Sample profile data
-   const profiles = [
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer', location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer', location: 'Central Vancouver', about: 'I am passionate about playing the piano. I also enjoy talking which serves only to increase the wordcount so I can see what happens if there is a block of text' },
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer', location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer', location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer', location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer', location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer', location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer', location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer', location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer', location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer',  location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer',  location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
-       { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer',  location: 'Vancouver', about: 'I love music!' },
-       { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer',  location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
-   ];
+    const [users, setUsers] = useState([]);
 
-   return (
-       <>
-           <div className="profile-list">
-               {profiles.map((profile, index) => (
-                   <ProfileCard
-                       key={index}
-                       name={profile.name}
-                       email={profile.email}
-                       instrument={profile.instrument}
-                       level={profile.level}
-                       location={profile.location}
-                       about={profile.about}
-                   />
-               ))}
-           </div>
-           <div className="nav-bar-fixed-bottom">
-               <LabelBottomNavigation />
-           </div>
-       </>
-   );
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/users");
+                setUsers(response.data);
+                console.log(response.data);
+            } catch (err) {
+                console.error("Error loading users", err);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
+    return (
+        <>
+            <div className="profile-list">
+                {users.map((user, index) => (
+                    <ProfileCard
+                        key={index}
+                        name={user.name || "NA"}
+                        email={user.email|| "NA"}
+                        instrument={user.instrument|| "NA"}
+                        level={user.level|| "NA"}
+                        location={user.location|| "NA"}
+                        about={user.about|| "NA"}
+                    />
+                ))}
+            </div>
+            <div className="nav-bar-fixed-bottom">
+                <LabelBottomNavigation />
+            </div>
+        </>
+    );
 };
-
 
 export default List;
