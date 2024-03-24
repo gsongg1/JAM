@@ -30,7 +30,7 @@ export default function CreateProfile() {
    event.preventDefault();
    console.log('Profile Details:', profile);
    // Perform profile creation logic...
-   navigate('/list'); // Navigate to the List page
+   navigate('/bio'); // Navigate to the List page
  };
 
 
