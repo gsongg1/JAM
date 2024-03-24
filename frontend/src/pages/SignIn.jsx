@@ -5,14 +5,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { Link as RouterLink } from 'react-router-dom'; // Renamed import for react-router-dom Link
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Link from '@mui/material/Link'; // Use MUI Link for styling
+import Link from '@mui/material/Link';
 
 function Return(props) {
   return (
@@ -20,9 +20,7 @@ function Return(props) {
       {'Return to '}
       <Link color="inherit" href="http://localhost:5173">
         Home
-      </Link>{' '}
-      
-      {'.'}
+      </Link>
     </Typography>
   );
 }
@@ -30,6 +28,8 @@ function Return(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -37,6 +37,7 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
+    navigate('/list');
   };
 
   return (
@@ -83,8 +84,6 @@ export default function SignIn() {
               label="Remember me"
             />
             <Button
-              component={RouterLink}
-              to="/profile-list"
               type="submit"
               fullWidth
               variant="contained"
@@ -99,7 +98,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <RouterLink to="/signup" variant="body2"> {}
+                <RouterLink to="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </RouterLink>
               </Grid>

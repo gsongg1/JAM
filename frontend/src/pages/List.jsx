@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use 'Routes' instead of 'Switch'
 import SignIn from './SignIn';
 import LabelBottomNavigation from '../components/Nav';
-import ProfileCard from './ProfileCard';
-import './App.css';
+import '../App.css';
+import ProfileCard from "../components/ProfileCard";
 
-const ProfileList = () => {
+const List = () => {
     // Sample profile data
     const profiles = [
         { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', location: 'Vancouver', about: 'I love music!' },
@@ -31,4 +31,4 @@ const ProfileList = () => {
     );
 };
 
-export default ProfileList;
+export default List;
