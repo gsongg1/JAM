@@ -4,6 +4,7 @@ import SignIn from './SignIn';
 import LabelBottomNavigation from '../components/Nav';
 import '../App.css';
 import ProfileCard from "../components/ProfileCard";
+import Filter from '../components/Filter'
 
 const List = () => {
     // Sample profile data
@@ -14,6 +15,7 @@ const List = () => {
 
     return (
         <div className="profile-list">
+            <Filter /> 
             {profiles.map((profile, index) => (
                 <ProfileCard
                     key={index}
