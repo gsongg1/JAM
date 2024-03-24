@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use 'Routes' instead of 'Switch'
-import SignIn from './SignIn';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // 
 import LabelBottomNavigation from '../components/Nav';
 import '../App.css';
 import MatchProfileCard from '../components/MatchProfileCard';

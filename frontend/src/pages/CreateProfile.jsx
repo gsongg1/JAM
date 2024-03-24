@@ -14,6 +14,7 @@ export default function CreateProfile() {
  const navigate = useNavigate();
  const [profile, setProfile] = useState({
    name: '', // Added name to the state
+   email: '',
    instrument: '',
    skillLevel: '',
    location: '',
@@ -30,7 +31,7 @@ export default function CreateProfile() {
    event.preventDefault();
    console.log('Profile Details:', profile);
    updateUser(profile)
-   navigate('/list'); // Navigate to the List page
+   navigate('/bio'); // Navigate to the List page
  };
 
 
