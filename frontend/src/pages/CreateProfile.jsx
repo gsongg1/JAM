@@ -5,7 +5,7 @@ import { Container, Button, Box, Typography, FormControl, InputLabel, Select, Me
 // Sample data for dropdowns
 const instrumentOptions = ['Guitar', 'Bass', 'Drums', 'Keyboard'];
 const skillLevelOptions = ['Beginner', 'Intermediate', 'Expert'];
-const locationOptions = ["North Van", "West Van", "UBC", "Downtown", "Kitsilano"]git ;
+const locationOptions = ["North Van", "West Van", "UBC", "Downtown", "Kitsilano"] ;
 const availabilityOptions = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 export default function CreateProfile() {
@@ -25,7 +25,7 @@ export default function CreateProfile() {
     event.preventDefault();
     console.log('Profile Details:', profile);
     // Perform profile creation logic...
-    navigate('/list'); // Navigate to the List page
+    navigate('/bio'); // Navigate to the List page
   };
 
   return (

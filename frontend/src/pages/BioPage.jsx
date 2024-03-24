@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -7,10 +8,14 @@ import Typography from '@mui/material/Typography';
 
 export default function BioPage() {
   const [bio, setBio] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Submitted Bio:', bio);
+    // Perform any additional logic...
+
+    navigate('/list'); // Navigate to the List page
   };
 
   return (
@@ -32,17 +37,15 @@ export default function BioPage() {
             margin="normal"
           />
           <Button
-  type="submit"
-  fullWidth
-  variant="contained"
-  sx={{ mt: 2, mb: 2, backgroundColor: 'green', '&:hover': { backgroundColor: 'darkgreen' } }}
->
-  Submit
-</Button>
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 2, mb: 2, backgroundColor: 'green', '&:hover': { backgroundColor: 'darkgreen' } }}
+          >
+            Submit
+          </Button>
         </Box>
       </Box>
     </Container>
   );
 }
-
-
