@@ -1,12 +1,16 @@
-// rafce for reqct template start
+// rafce for react template start
 
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link, useLocation } from 'react-router-dom'; // Import the useLocation hook
 
 const Header = () => {
+  const location = useLocation(); // Get the current location
+
   return (
     <div>
-        <Link to="/SignUp">SignUp</Link> {}
+      {location.pathname === '/' && (
+        <Link to="/signup">Sign Up</Link> 
+      )}
     </div>
   );
 };
