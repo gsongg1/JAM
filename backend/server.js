@@ -30,6 +30,7 @@ mongoose
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
+  password: String,
   picture: String,
   instrument: {
     type: String,
@@ -47,6 +48,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ["M", "T", "W", "Th", "F", "S", "Su"],
   },
+  bio: String,
 });
 
 // Create a Mongoose model for the User schema
@@ -57,6 +59,9 @@ const User = mongoose.model("User", userSchema);
 // Define a GET route to fetch all todos
 app.get("/todos", async (req, res) => {
   try {
+    const field = req.query.field
+    const value = req.query.value
+    find(field, value)
     const todos = await Todo.find(); // Fetch all todos from the database
     res.status(200).json(todos); // Send a 200 OK response with the todos
   } catch (err) {
@@ -64,7 +69,7 @@ app.get("/todos", async (req, res) => {
   }
 });
 
-// Define a POST route to create a new todo
+// Define a POST route to create a new user
 app.post("/users", async (req, res) => {
   const user = new User({
     name: req.body.name,
