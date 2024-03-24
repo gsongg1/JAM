@@ -56,14 +56,11 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-// Define a GET route to fetch all todos
-app.get("/todos", async (req, res) => {
+// Define a GET route to fetch all users
+app.get("/users", async (req, res) => {
   try {
-    const field = req.query.field
-    const value = req.query.value
-    find(field, value)
-    const todos = await Todo.find(); // Fetch all todos from the database
-    res.status(200).json(todos); // Send a 200 OK response with the todos
+    const users = await User.find(); // Fetch all users from the database
+    res.status(200).json(users); // Send a 200 OK response with the user list
   } catch (err) {
     res.status(500).json({ message: err.message }); // Send a 500 Internal Server Error response if an error occurs
   }
@@ -74,11 +71,13 @@ app.post("/users", async (req, res) => {
   const user = new User({
     name: req.body.name,
     email: req.body.email,
+    password: req.body.password,
     picture: req.body.picture,
     instrument: req.body.instrument,
     skillLevel: req.body.skillLevel,
     location: req.body.location,
     availability: req.body.availability,
+    bio: req.body.bio,
   });
   try {
     const newUser = await user.save(); // Save the new user to the database
@@ -100,8 +99,7 @@ app.put("/todos/:id", async (req, res) => {
   }
 });
 
-// Define a DELETE route to delete an existing todo
-app.delete("/todos/:id", async (req, res) => {
+// Define a DELETE route to delete an existing user
   try {
     await Todo.findByIdAndDelete(req.params.id); // Delete the todo with the specified ID
     res.status(204).send(); // Send a 204 No Content response to indicate successful deletion
