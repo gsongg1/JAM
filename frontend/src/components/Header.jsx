@@ -1,27 +1,36 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import the useLocation hook
+import { Link, useLocation } from 'react-router-dom';
+import Button from '@mui/material/Button'; // Import Button component from Material-UI
+
 
 const Header = () => {
-  const location = useLocation(); // Get the current location
+ const location = useLocation();
 
-  return (
-    <div>
-      {location.pathname === '/' && (
-        <Link
-          to="/signup"
-          style={{
-            fontSize: '24px', // Set font size
-            fontFamily: 'Arial, sans-serif', // Set font family
-            fontWeight: 'bold', // Set font weight
-            color: '#007bff', // Set text color
-            textDecoration: 'none', // Remove underline
-          }}
-        >
-          Start Jamming!
-        </Link> 
-      )}
-    </div>
-  );
+
+ return (
+   <div>
+     {location.pathname === '/' && (
+       <Button
+         component={Link}
+         to="/signup"
+         variant="contained" // Use contained button style
+         color="primary" // Set button color to primary (blue)
+         style={{
+           fontSize: '24px',
+           fontFamily: 'Arial, sans-serif',
+           fontWeight: 'bold',
+           textDecoration: 'none',
+         }}
+       >
+         Start Jamming!
+       </Button>
+     )}
+   </div>
+ );
 };
 
+
 export default Header;
+
+
+

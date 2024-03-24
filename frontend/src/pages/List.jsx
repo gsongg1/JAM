@@ -70,6 +70,7 @@ import LabelBottomNavigation from '../components/Nav';
 import '../App.css';
 import axios from "axios"
 
+
 const List = () => {
     const [users, setUsers] = useState([]);
 
@@ -87,6 +88,29 @@ const List = () => {
         fetchUsers();
     }, []);
 
+  return (
+      <>
+          <div className="filter-component">
+              <Filter />
+          </div>
+          <div className="profile-list">
+              {profiles.map((profile, index) => (
+                  <ProfileCard
+                      key={index}
+                      name={profile.name}
+                      email={profile.email}
+                      instrument={profile.instrument}
+                      level={profile.level}
+                      location={profile.location}
+                      about={profile.about}
+                  />
+              ))}
+          </div>
+          <div className="nav-bar-fixed-bottom">
+              <LabelBottomNavigation />
+          </div>
+      </>
+  );
     return (
         <>
             <div className="profile-list">
@@ -108,5 +132,7 @@ const List = () => {
         </>
     );
 };
+
+
 
 export default List;

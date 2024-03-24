@@ -35,12 +35,13 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const email = data.get('email');
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
     addUser(data.get("email"), data.get("password"))
-    navigate('/create-profile'); // Navigate to the CreateProfile page
+    navigate('/create-profile', { state: { email } }); // Navigate to the CreateProfile page
   };
 
   return (

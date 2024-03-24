@@ -34,7 +34,7 @@ function App() {
           <Route path="/create-profile" element={<CreateProfile />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/match-list" element={<MatchPage />} />
-          <Route path="/" element={<h1 className="text-3xl font-bold text-blue-600">JAMI</h1>} />
+          <Route path="/" element={<h1 className="text-3xl font-bold text-blue-600">JAM</h1>} />
         </Routes>
       </div>
       </div>
