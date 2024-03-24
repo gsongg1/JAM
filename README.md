@@ -4,4 +4,7 @@ Web app application to match musicians seeking other musicians based on experien
 
 STACK:
 FRONTEND: React, JS, Tailwind, Material UI
-BACKEND:
+BACKEND:Node, MongoDB,
+
+logo created with DALL-E
+NOTE: CHATGPT WAS USED TO ASSIST IN THE WRITING OF THIS CODE

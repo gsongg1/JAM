@@ -10,6 +10,7 @@ import BioPage from './pages/BioPage';
 import List from './pages/List';
 import CreateProfile from './pages/CreateProfile';
 import ProfilePage from './pages/ProfilePage';
+import jamLogo from './assets/LOGO.webp'; 
 
 
 
@@ -20,6 +21,9 @@ function App() {
     <Router>
       <div>
         <Header />
+        <div className="logo-container">
+          <img src={jamLogo} alt="JamTogether Logo" className="jam-logo" />
+        </div>
         <Routes>
           <Route path="/" element={<h1 className="text-3xl font-bold underline text-red-600">WELCOME TO JAM</h1>} />
           <Route path="/signup" element={<SignUp />} />
