@@ -15,7 +15,7 @@ export default function BioPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Submitted Bio:', bio);
-    // Perform any additional logic...
+    //needs logic to save bio  
 
     navigate('/list'); // Navigate to the List page
   };

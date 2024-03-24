@@ -14,6 +14,7 @@ export default function CreateProfile() {
  const navigate = useNavigate();
  const [profile, setProfile] = useState({
    name: '', // Added name to the state
+   email: '',
    instrument: '',
    skillLevel: '',
    location: '',
