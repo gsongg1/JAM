@@ -14,14 +14,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 
-function Copyright(props) {
+function Return(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+      {'Return to '}
       <Link color="inherit" href="http://localhost:5173">
-        Your Website
+        Home
       </Link>{' '}
-      {new Date().getFullYear()}
+      
       {'.'}
     </Typography>
   );
@@ -116,7 +116,7 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center">
               <Grid item>
                 <RouterLink to="/signin" variant="body2">
                   Already have an account? Sign in
@@ -125,7 +125,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        <Return sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

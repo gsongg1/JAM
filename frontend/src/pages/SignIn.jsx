@@ -14,14 +14,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from '@mui/material/Link'; // Use MUI Link for styling
 
-function Copyright(props) {
+function Return(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+      {'Return to '}
       <Link color="inherit" href="http://localhost:5173">
-        Your Website
+        Home
       </Link>{' '}
-      {new Date().getFullYear()}
+      
       {'.'}
     </Typography>
   );
@@ -97,14 +97,14 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <RouterLink to="/signup" variant="body2"> {/* Use RouterLink for navigation */}
+                <RouterLink to="/signup" variant="body2"> {}
                   {"Don't have an account? Sign Up"}
                 </RouterLink>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Return sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

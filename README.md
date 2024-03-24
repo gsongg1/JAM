@@ -3,5 +3,5 @@
 Web app application to match musicians seeking other musicians based on experience, instruments used, and distance away from you.
 
 STACK:
-FRONTEND: JS,NODE,Express
-BACKEND:React,Tailwind
+FRONTEND: React, JS, Tailwind, Material UI
+BACKEND:
