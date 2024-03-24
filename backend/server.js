@@ -52,7 +52,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a Mongoose model for the User schema
-// DIFFERENT
 
 const User = mongoose.model("User", userSchema);
 
@@ -87,26 +86,27 @@ app.post("/users", async (req, res) => {
   }
 });
 
-// Define a PUT route to update an existing todo
+// Define a PUT route to update an existing user
 app.put("/users/:email", async (req, res) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.email,
+    const updatedUser = await User.findOneAndUpdate(
+      { email: req.params.email.toString() },
       req.body,
       {
         new: true, // Return the updated document
       }
     );
-    res.status(200).json(updatedUser); // Send a 200 OK response with the updated todo
+    res.status(200).json(updatedUser); // Send a 200 OK response with the updated user
   } catch (err) {
-    res.status(400).json({ message: err.message }); // Send a 400 Bad Request response if an error occurs
+    res.status(400).json({ message: err.message });
+    console.log(req.params.email) // Send a 400 Bad Request response if an error occurs
   }
 });
 
 // Define a DELETE route to delete an existing user
 app.delete("/users/:email", async (req, res) => {
   try {
-    await User.findOneAndDelete(req.params.email); // Delete the user with the specified ID
+    await User.findOneAndDelete(req.params.email.toString()); // Delete the user with the specified ID
     res.status(204).send(); // Send a 204 No Content response to indicate successful deletion
   } catch (err) {
     res.status(500).json({ message: err.message }); // Send a 500 Internal Server Error response if an error occurs
