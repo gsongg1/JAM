@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn';
 import BioPage from './pages/BioPage';
 import List from './pages/List';
 import CreateProfile from './pages/CreateProfile';
+import ProfilePage from './pages/ProfilePage';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/bio" element={<BioPage />} />
           <Route path="/list" element={<List />} />
           <Route path="/create-profile" element={<CreateProfile />} />
+          <Route path="/profile" element={<ProfilePage />} />
 
         </Routes>
       </div>

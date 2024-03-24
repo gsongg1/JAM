@@ -24,10 +24,10 @@ const List = () => {
                     about={profile.about}
                 />
             ))}
-            <div style={{ position: 'fixed', bottom: 0, width: '100%' }}>
+    
                 <LabelBottomNavigation />
             </div>
-        </div>
+        
     );
 };
 

@@ -1,17 +1,16 @@
 import React from "react";
-import Profile from "../components/Profile";
-import LabelBottomNavigation from "../components/Nav";
+import Profile from "../components/Profile"; // Import the Profile component
+import LabelBottomNavigation from "../components/Nav"; // Import the navigation bar component
+import "../App.css"; // Import the CSS file for styling
 
-// Define a functional component, for example, App or ProfilePage
-const App = () => {
+const ProfilePage = () => {
   const userName = "John Doe";
   const userEmail = "john.doe@example.com";
-  const userInstrument = "trumpet";
+  const userInstrument = "Trumpet";
   const userLevel = "2";
   const userLocation = "Vancouver";
   const userAbout = "Looking to jam";
 
-  // Return JSX from inside the component
   return (
     <div className="app">
       <Profile
@@ -20,10 +19,11 @@ const App = () => {
         instrument={userInstrument}
         level={userLevel}
         location={userLocation}
-        about={userAbout} />
+        about={userAbout}
+      />
       <LabelBottomNavigation />
     </div>
   );
 };
 
-export default App; // Export the component to use it in other parts of your application
+export default ProfilePage; // Export the ProfilePage component
