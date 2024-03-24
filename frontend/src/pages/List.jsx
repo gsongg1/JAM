@@ -65,11 +65,10 @@
 // export default List;
 
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ProfileCard from "../components/ProfileCard";
 import LabelBottomNavigation from '../components/Nav';
 import '../App.css';
-import axios from "axios"
-
 
 const List = () => {
     const [users, setUsers] = useState([]);
@@ -79,7 +78,6 @@ const List = () => {
             try {
                 const response = await axios.get("http://localhost:3000/users");
                 setUsers(response.data);
-                console.log(response.data);
             } catch (err) {
                 console.error("Error loading users", err);
             }
@@ -88,41 +86,18 @@ const List = () => {
         fetchUsers();
     }, []);
 
-  return (
-      <>
-          <div className="filter-component">
-              <Filter />
-          </div>
-          <div className="profile-list">
-              {profiles.map((profile, index) => (
-                  <ProfileCard
-                      key={index}
-                      name={profile.name}
-                      email={profile.email}
-                      instrument={profile.instrument}
-                      level={profile.level}
-                      location={profile.location}
-                      about={profile.about}
-                  />
-              ))}
-          </div>
-          <div className="nav-bar-fixed-bottom">
-              <LabelBottomNavigation />
-          </div>
-      </>
-  );
     return (
         <>
             <div className="profile-list">
                 {users.map((user, index) => (
                     <ProfileCard
                         key={index}
-                        name={user.name || "NA"}
-                        email={user.email|| "NA"}
-                        instrument={user.instrument|| "NA"}
-                        level={user.level|| "NA"}
-                        location={user.location|| "NA"}
-                        about={user.about|| "NA"}
+                        name={user.name}
+                        email={user.email}
+                        instrument={user.instrument}
+                        level={user.level}
+                        location={user.location}
+                        about={user.about}
                     />
                 ))}
             </div>
@@ -132,7 +107,5 @@ const List = () => {
         </>
     );
 };
-
-
 
 export default List;
