@@ -4,6 +4,7 @@ import SignIn from './SignIn';
 import LabelBottomNavigation from '../components/Nav';
 import '../App.css';
 import ProfileCard from "../components/ProfileCard";
+import Filter from '../components/Filter'
 
 
 const List = () => {
@@ -24,7 +25,6 @@ const List = () => {
        { name: 'John Doe', email: 'john@example.com', instrument: 'Guitar', level: 'begineer',  location: 'Vancouver', about: 'I love music!' },
        { name: 'Jane Smith', email: 'jane@example.com', instrument: 'Piano', level: 'begineer',  location: 'Central Vancouver', about: 'I am passionate about playing the piano.' },
    ];
-
 
    return (
        <>
