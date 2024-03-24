@@ -99,7 +99,8 @@ app.put("/todos/:id", async (req, res) => {
   }
 });
 
-// Define a DELETE route to delete an existing user
+// Define a DELETE route to delete an existing todo
+app.delete("/todos/:id", async (req, res) => {
   try {
     await Todo.findByIdAndDelete(req.params.id); // Delete the todo with the specified ID
     res.status(204).send(); // Send a 204 No Content response to indicate successful deletion
