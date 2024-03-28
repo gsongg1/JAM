@@ -16,7 +16,7 @@ const sendConnectionRequest = async (email) => {
   // In a real scenario, handle the API response here
 };
 
-const ProfileCard = ({ name, email, instrument, level, location, about }) => {
+const ProfileCard = ({ name, email, instrument, level, location, about, availability }) => {
   const handleConnectClick = () => {
     // Call the function to handle connection logic here
     // Replace this with your actual API call logic
@@ -29,7 +29,7 @@ const ProfileCard = ({ name, email, instrument, level, location, about }) => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '14px', marginBottom: '10px' }}>
         <span style={{ display: 'flex', alignItems: 'center' }}>
           <LocationOnIcon style={{ fontSize: '1rem', marginRight: '5px' }} />
-          {location}
+          {location} &#8226; Available {availability}
         </span>
         <span style={{ display: 'flex', alignItems: 'center' }}>
           <MusicNoteIcon style={{ fontSize: '1rem', marginRight: '5px' }} />

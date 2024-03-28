@@ -3,9 +3,9 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'; // Location icon
 import MusicNoteIcon from '@mui/icons-material/MusicNote'; // Instrument icon
 import SendIcon from '@mui/icons-material/Send'; // Paper airplane icon for email messaging
 
-const MatchProfileCard = ({ name, email, instrument, level, location, about }) => {
+const MatchProfileCard = ({ name, email, instrument, level, location, about, availability}) => {
   const handleConnectClick = () => {
-    window.location.href = `mailto:${email}`;
+    window.open(`mailto:${email}`, '_blank');
   };
 
   return (
@@ -14,7 +14,7 @@ const MatchProfileCard = ({ name, email, instrument, level, location, about }) =
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '14px', marginBottom: '10px' }}>
         <span style={{ display: 'flex', alignItems: 'center' }}>
           <LocationOnIcon style={{ fontSize: '1rem', marginRight: '5px' }} />
-          {location}
+          {location} &#8226; Available {availability}
         </span>
         <span style={{ display: 'flex', alignItems: 'center' }}>
           <MusicNoteIcon style={{ fontSize: '1rem', marginRight: '5px' }} />

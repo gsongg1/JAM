@@ -76,7 +76,7 @@ app.post("/users", async (req, res) => {
     skillLevel: req.body.skillLevel,
     location: req.body.location,
     availability: req.body.availability,
-    bio: req.body.bio,
+    about: req.body.bio,
   });
   try {
     const newUser = await user.save(); // Save the new user to the database

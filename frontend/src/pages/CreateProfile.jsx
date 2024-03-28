@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   Button,
@@ -12,25 +11,26 @@ import {
   TextField,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 // Sample data for dropdowns
 const instrumentOptions = ["Guitar", "Bass", "Drums", "Keyboard"];
 const skillLevelOptions = ["Beginner", "Intermediate", "Expert"];
 const locationOptions = [
-  "North Van",
-  "West Van",
+  "North Vancouver",
+  "West Vancouver",
   "UBC",
-  "Downtown",
+  "Downtown Vancouver",
   "Kitsilano",
 ];
 const availabilityOptions = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  "Mondays",
+  "Tuesdays",
+  "Wednesdays",
+  "Thursdays",
+  "Fridays",
+  "Saturdays",
+  "Sundays",
 ];
 
 export default function CreateProfile() {
@@ -54,7 +54,7 @@ export default function CreateProfile() {
     event.preventDefault();
     console.log("Profile Details:", profile);
     updateUser(profile);
-    navigate("/bio"); // Navigate to the List page
+    navigate("/bio", { state: { email: profile.email } }); // Navigate to the bio page
   };
 
   return (
